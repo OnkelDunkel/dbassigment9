@@ -30,6 +30,32 @@ Finally select only customerName and city
 
 ## 2. Add row counts to the subexpressions
 
-<img src="https://latex.codecogs.com/gif.latex?\Pi_{customerName,\,city}(offices\bowtie(\Pi_{customerName,\,officeCode,\,city}\;(employees\bowtie(\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;(customers)^{[122]})^{[100]})^{[100]})^{[14]})^{[14]}"/>
+<img src="https://latex.codecogs.com/gif.latex?\Pi_{customerName,\,city}(offices^{[7]}\bowtie(\Pi_{customerName,\,officeCode,\,city}\;(employees^{[23]}\bowtie(\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;(customers^{[122]})^{[122]})^{[100]})^{[100]})^{[14]})^{[14]}"/>
 
 ## 3. Rewrite to a better expression
+
+### Steps
+
+Natural join on employees and offices.
+
+<img src="https://latex.codecogs.com/gif.latex?A=employees\bowtie\,offices"/>
+
+Remove unwanted columns so only officeCode, city, employeeNumber are left.
+
+<img src="https://latex.codecogs.com/gif.latex?B=\Pi_{officeCode,\,city,\,employeeNumber}\;A"/>
+
+Natural join with customers after renaming employeeNumber -> salesRepEmployeeNumber.
+
+<img src="https://latex.codecogs.com/gif.latex?C=customers\bowtie(\rho_{salesRepEmployeeNumber\,/\,mployeeNumber}\;B)"/>
+
+Project only the columns that we want.
+
+<img src="https://latex.codecogs.com/gif.latex?\Pi_{customerName,\,city}C"/>
+
+### One liner
+
+<img src="https://latex.codecogs.com/gif.latex?\Pi_{customerName,\,city}(customers\bowtie(\rho_{salesRepEmployeeNumber\,/\,mployeeNumber}\;(\Pi_{officeCode,\,city,\,employeeNumber}\;(employees\bowtie\,offices))))"/>
+
+### With row numbers
+
+<img src="https://latex.codecogs.com/gif.latex?(\Pi_{customerName,\,city}(customers^{[122]}\bowtie(\rho_{salesRepEmployeeNumber\,/\,mployeeNumber}\;(\Pi_{officeCode,\,city,\,employeeNumber}\;(employees^{[23]}\bowtie\,offices^{[7]})^{[23]})^{[23]})^{[23]})^{[14]})^{[14]}"/>
