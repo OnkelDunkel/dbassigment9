@@ -20,10 +20,16 @@ Natural join with offices. Since both D and the offices tables have city and off
 
 <img src="https://latex.codecogs.com/gif.latex?D=offices\bowtie\,C"/>
 
-### Final result
+Finally select only customerName and city
 
-<img src="https://latex.codecogs.com/gif.latex?offices\bowtie\Pi_{customerName,\,officeCode,\,city}\;(employees\bowtie\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;(customers))"/>
+<img src="https://latex.codecogs.com/gif.latex?\Pi_{customerName,\,city}D"/>
+
+### Final one-liner
+
+<img src="https://latex.codecogs.com/gif.latex?\Pi_{customerName,\,city}offices\bowtie\Pi_{customerName,\,officeCode,\,city}\;(employees\bowtie\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;(customers))"/>
 
 ## 2. Add row counts to the subexpressions
+
+<img src="https://latex.codecogs.com/gif.latex?\Pi_{customerName,\,city}(offices\bowtie(\Pi_{customerName,\,officeCode,\,city}\;(employees\bowtie(\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;(customers)^{[122]})^{[100]})^{[100]})^{[14]})^{[14]}"/>
 
 ## 3. Rewrite to a better expression
