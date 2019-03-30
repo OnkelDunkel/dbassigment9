@@ -6,7 +6,7 @@
 
 Rename salesRepEmployeeNumber -> employeeNumber in customer table
 
-<img src="https://latex.codecogs.com/svg.latex?A=\rho_{employeeNumber\,/\,salesRepEmployeeNumber}(customers)"/>
+<img src="https://latex.codecogs.com/svg.latex?A=\rho_{employeeNumber\,/\,salesRepEmployeeNumber}customers"/>
 
 Natural join with employees
 
@@ -26,7 +26,7 @@ Finally select only customerName and city
 
 ### Final one-liner
 
-<img src="https://latex.codecogs.com/svg.latex?\Pi_{customerName,\,city}offices\bowtie\Pi_{customerName,\,officeCode,\,city}\;(employees\bowtie\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;(customers))"/>
+<img src="https://latex.codecogs.com/svg.latex?\Pi_{customerName,\,city}offices\bowtie\Pi_{customerName,\,officeCode,\,city}\;(employees\bowtie(\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;customers))"/>
 
 ## 2. Add row counts to the subexpressions
 
