@@ -30,7 +30,7 @@ Finally select only customerName and city
 
 ## 2. Add row counts to the subexpressions
 
-<img src="https://latex.codecogs.com/svg.latex?\Pi_{customerName,\,city}(offices^{[7]}\bowtie(\Pi_{customerName,\,officeCode,\,city}\;(employees^{[23]}\bowtie(\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;(customers^{[122]})^{[122]})^{[100]})^{[100]})^{[14]})^{[14]}"/>
+<img src="https://latex.codecogs.com/svg.latex?(\Pi_{customerName,\,city}(offices^{[7]}\bowtie(\Pi_{customerName,\,officeCode,\,city}\;(employees^{[23]}\bowtie(\rho_{employeeNumber\,/\,salesRepEmployeeNumber}\;customers^{[122]})^{[122]})^{[100]})^{[100]})^{[14]})^{[14]}"/>
 
 ## 3. Rewrite to a better expression
 
